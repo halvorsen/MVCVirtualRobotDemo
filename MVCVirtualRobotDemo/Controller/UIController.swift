@@ -183,15 +183,11 @@ extension UIController: RobotDelegate {
     
     internal func relocateRobot(robotView: RobotView) {
         let instructions = robotModel.instructionsToLocation(x:starModel.locationOfCenterX, y:starModel.locationOfCenterY)
-        let instructionAmount = instructions.count
-        var count = 1
         moveView(instructions: instructions, count: 0, done: {
-            robotModel.locationCenter = starModel.locationCenter
+            self.robotModel.locationCenter = self.starModel.locationCenter
             
         })
-        
-        
-        
+
     }
 }
 

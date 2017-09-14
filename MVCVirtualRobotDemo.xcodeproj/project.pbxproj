@@ -15,7 +15,7 @@
 		062120021F6AE91800C0BD37 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06211FFE1F6AE91700C0BD37 /* GridView.swift */; };
 		062120031F6AE91800C0BD37 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06211FFF1F6AE91700C0BD37 /* GridCell.swift */; };
 		062120041F6AE91800C0BD37 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120001F6AE91700C0BD37 /* Star.swift */; };
-		062120051F6AE91800C0BD37 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120011F6AE91800C0BD37 /* Robot.swift */; };
+		062120051F6AE91800C0BD37 /* RobotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120011F6AE91800C0BD37 /* RobotView.swift */; };
 		062120091F6AE92800C0BD37 /* UIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120061F6AE92700C0BD37 /* UIController.swift */; };
 		0621200A1F6AE92800C0BD37 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120071F6AE92700C0BD37 /* Controller.swift */; };
 		0621200B1F6AE92800C0BD37 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120081F6AE92800C0BD37 /* Delegates.swift */; };
@@ -36,7 +36,7 @@
 		06211FFE1F6AE91700C0BD37 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		06211FFF1F6AE91700C0BD37 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
 		062120001F6AE91700C0BD37 /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
-		062120011F6AE91800C0BD37 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
+		062120011F6AE91800C0BD37 /* RobotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotView.swift; sourceTree = "<group>"; };
 		062120061F6AE92700C0BD37 /* UIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIController.swift; sourceTree = "<group>"; };
 		062120071F6AE92700C0BD37 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		062120081F6AE92800C0BD37 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			children = (
 				06211FFF1F6AE91700C0BD37 /* GridCell.swift */,
 				06211FFE1F6AE91700C0BD37 /* GridView.swift */,
-				062120011F6AE91800C0BD37 /* Robot.swift */,
+				062120011F6AE91800C0BD37 /* RobotView.swift */,
 				062120001F6AE91700C0BD37 /* Star.swift */,
 			);
 			path = Views;
@@ -209,7 +209,7 @@
 				062120161F6AEAA200C0BD37 /* MoveableCursor.swift in Sources */,
 				0621200A1F6AE92800C0BD37 /* Controller.swift in Sources */,
 				0621200D1F6AE93300C0BD37 /* ViewController.swift in Sources */,
-				062120051F6AE91800C0BD37 /* Robot.swift in Sources */,
+				062120051F6AE91800C0BD37 /* RobotView.swift in Sources */,
 				0621200B1F6AE92800C0BD37 /* Delegates.swift in Sources */,
 				062120021F6AE91800C0BD37 /* GridView.swift in Sources */,
 				06211FE81F6ACC9300C0BD37 /* AppDelegate.swift in Sources */,

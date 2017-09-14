@@ -11,7 +11,7 @@ import UIKit
 class GridView: UIView {
     
     var cells = [GridCell]()
-    var GridViewWidth {
+    var gridViewWidth: CGFloat {
         if UIScreen.main.bounds.height < UIScreen.main.bounds.width {
             return UIScreen.main.bounds.height
         } else {
@@ -20,7 +20,7 @@ class GridView: UIView {
     }
     
     init() {
-        super.init(frame: CGRect(x: 0, y: 0, width: GridViewWidth, height: GridViewWidth))
+        super.init(frame: CGRect(x: 0, y: 0, width: gridViewWidth, height: gridViewWidth))
         let margin: CGFloat = 2
         let cellWidth: CGFloat = CGFloat(Int((self.bounds.size.width - 5*margin)/4))
         for i in 0..<4 {

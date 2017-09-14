@@ -29,8 +29,8 @@ struct MovableCursor {
     
     init(){}
     
-    init(size: (Float,Float), center: (Float,Float)) {
-        size = size
-        center = center
+    init(_size: (Float,Float), _center: (Float,Float)) {
+        size = _size
+        locationCenter = _center
     }
 }
