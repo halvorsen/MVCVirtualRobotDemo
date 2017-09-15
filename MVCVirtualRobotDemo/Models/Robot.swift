@@ -31,7 +31,7 @@ struct Robot {
     public var locationCenter: (Float,Float) = (1.0,1.0)
     public var name: String?
     private var speed: Float = 1.0
-    private var anglularVelocity: Float = 1.0
+    private var anglularVelocity: Float = 10.0
     private var homeLocation: (Float,Float) = (0.0,0.0)
     
     private enum RobotFaceDirection {
@@ -45,6 +45,7 @@ struct Robot {
     
     init(_center: (x:Float,y:Float), _size: (Float,Float), _speed: Float, _name: String?) {
         homeLocation = _center
+        locationCenter = _center
         speed = _speed
         name = _name
         size = _size
@@ -90,24 +91,27 @@ struct Robot {
     public mutating func instructionsToLocation(x:Float,y:Float) -> [(action:MovementAction,animationTime:Double)] {
         
         switch myStep {
-            
         case .rotationUpOrDown:
             instructions.removeAll()
             let yMovement = y - locationOfCenterY
-            if yMovement > 1 {
-                
-                instructions.append((.rotateToFaceUp, Double(angleOfRotation(start: direction, end: .up)/anglularVelocity)))
-                    myStep = .moveUpOrDown
-                    instructionsToLocation(x: x, y: y)
-                    direction = .up
-            } else if yMovement < 1 {
+            if yMovement > 1 && direction != .down {
                 instructions.append((.rotateToFaceDown, Double(angleOfRotation(start: direction, end: .down)/anglularVelocity)))
-                myStep = .moveUpOrDown
-                instructionsToLocation(x: x, y: y)
+                    myStep = .moveUpOrDown
                 direction = .down
+                  let _ = instructionsToLocation(x: x, y: y)
+                
+            } else if yMovement < -1 && direction != .up {
+                instructions.append((.rotateToFaceUp, Double(angleOfRotation(start: direction, end: .up)/anglularVelocity)))
+                myStep = .moveUpOrDown
+                direction = .up
+                let _ = instructionsToLocation(x: x, y: y)
+                
+            } else if (yMovement > 1 && direction == .down) || (yMovement < -1 && direction == .up) {
+                myStep = .moveUpOrDown
+                let _ = instructionsToLocation(x: x, y: y)
             } else {
                 myStep = .rotationLeftOrRight
-                instructionsToLocation(x: x, y: y)
+                let _ = instructionsToLocation(x: x, y: y)
             }
             
         case .moveUpOrDown:
@@ -115,25 +119,28 @@ struct Robot {
             let yMovement = y - locationOfCenterY
             instructions.append((.moveVertical,Double(abs(yMovement/speed))))
             myStep = .rotationLeftOrRight
-            instructionsToLocation(x: x, y: y)
+            let _ = instructionsToLocation(x: x, y: y)
             
         case .rotationLeftOrRight:
             
             let xMovement = x - locationOfCenterX
-            if xMovement > 1 {
-                
-                instructions.append((.rotateToFaceLeft, Double(angleOfRotation(start: direction, end: .left)/anglularVelocity)))
+            if xMovement > 1 && direction != .right {
+                instructions.append((.rotateToFaceRight, Double(angleOfRotation(start: direction, end: .right)/anglularVelocity)))
                     myStep = .moveLeftOrRight
-                    instructionsToLocation(x: x, y: y)
-                    direction = .left
-            } else if xMovement < 1 {
-                instructions.append((.rotateToFaceLeft, Double(angleOfRotation(start: direction, end: .right)/anglularVelocity)))
-                myStep = .moveLeftOrRight
-                instructionsToLocation(x: x, y: y)
                 direction = .right
+                    let _ = instructionsToLocation(x: x, y: y)
+                
+            } else if xMovement < -1 && direction != .left {
+                instructions.append((.rotateToFaceLeft, Double(angleOfRotation(start: direction, end: .left)/anglularVelocity)))
+                myStep = .moveLeftOrRight
+                direction = .left
+                let _ = instructionsToLocation(x: x, y: y)
+                
+            } else if (xMovement > 1 && direction == .right) || (xMovement < -1 && direction == .left) {
+                myStep = .moveLeftOrRight
+                let _ = instructionsToLocation(x: x, y: y)
             } else {
                 myStep = .rotationUpOrDown
-                locationCenter = (x,y)
                 //complete & set up for next
                 return instructions
             }
@@ -144,7 +151,6 @@ struct Robot {
             instructions.append((.moveHorizontal,Double(abs(xMovement/speed))))
             myStep = .rotationUpOrDown
             //complete & set up for next
-            locationCenter = (x,y)
             return instructions
         }
         return instructions

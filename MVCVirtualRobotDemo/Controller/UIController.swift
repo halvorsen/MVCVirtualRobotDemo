@@ -12,9 +12,7 @@ class UIController {
     
     fileprivate var timer = Timer()
     fileprivate var changeColorTimer = Timer()
-    fileprivate var myStep: Step = .rotationUpOrDown
     fileprivate let speed = Double(UIScreen.main.bounds.width/4)
-    fileprivate var rootDirection: RobotDirection = .up
     fileprivate var view = UIView()
     fileprivate var tap = UITapGestureRecognizer()
     fileprivate var pan = UIPanGestureRecognizer()
@@ -109,6 +107,7 @@ extension UIController {
             }
             
             timer.invalidate()
+            starModel.isBlinking = false
             
         } else if gestureRecognizer.state == .changed && startedPanOnStar {
             
@@ -142,16 +141,8 @@ extension UIController {
         
     }
 }
-
+//animation functions
 extension UIController: RobotDelegate {
-    
-    enum RobotDirection {
-        case up,down,left,right
-    }
-    
-    enum Step {
-        case rotationUpOrDown, moveUpOrDown, rotationLeftOrRight, moveLeftOrRight
-    }
     
     internal func moveView(instructions: [(MovementAction,Double)], count: Int, done: @escaping () -> Void) {
         if count < instructions.count {
@@ -162,9 +153,9 @@ extension UIController: RobotDelegate {
             case .rotateToFaceDown:
                 self.robotView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
             case .rotateToFaceLeft:
-                self.robotView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
-            case .rotateToFaceRight:
                 self.robotView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+            case .rotateToFaceRight:
+                self.robotView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
             case .moveHorizontal:
                 self.robotView.center.x = CGFloat(self.starModel.locationOfCenterX)
             case .moveVertical:
@@ -183,14 +174,15 @@ extension UIController: RobotDelegate {
     
     internal func relocateRobot(robotView: RobotView) {
         let instructions = robotModel.instructionsToLocation(x:starModel.locationOfCenterX, y:starModel.locationOfCenterY)
+        print(instructions)
         moveView(instructions: instructions, count: 0, done: {
-            self.robotModel.locationCenter = self.starModel.locationCenter
+            self.robotModel.locationCenter = (Float(self.robotView.center.x),Float(self.robotView.center.y))
             
         })
 
     }
 }
-
+//blink the cursor
 extension UIController: StarDelegate {
     
     internal func highlightStar(view: UIView) {
@@ -198,6 +190,7 @@ extension UIController: StarDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) {_ in
             
             self.pulse(highlightedView: view)
+            self.starModel.isBlinking = true
         }
         
     }
