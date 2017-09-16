@@ -14,17 +14,13 @@ class GridCell: UIView {
     var column = Int()
     var star = Star()
     
-    var gridColor: UIColor {
-       return CustomColor.purpleHues.2
-    }
-    
-    init(cellSize: CGSize, cellOriginX: CGFloat, cellOriginY: CGFloat) {
+    init(cellSize: CGSize, cellOriginX: CGFloat, cellOriginY: CGFloat, startColor: UIColor) {
         
         super.init(frame: CGRect(x: cellOriginX, y: cellOriginY, width: cellSize.width, height: cellSize.height))
         
-        self.backgroundColor = gridColor
+        self.backgroundColor = startColor
         
-        star = Star(starSize: CGSize(width: self.bounds.width/2, height: self.bounds.width/2), starOriginX: 0, starOriginY: 0)
+        star = Star(starSize: CGSize(width: self.bounds.width/2, height: self.bounds.width/2), starOriginX: 0, starOriginY: 0, image: #imageLiteral(resourceName: "star"))
         star.center = CGPoint(x: bounds.width/2, y: bounds.height/2)
         addSubview(star)
         

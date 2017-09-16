@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GridView: UIView {
+class GridView4x4: UIView {
     
     var cells = [GridCell]()
     var gridViewWidth: CGFloat {
@@ -20,15 +20,20 @@ class GridView: UIView {
     }
     
     init() {
+        super.init(frame: CGRect.zero)
+    }
+    
+    init(marginsWidth: CGFloat) {
         super.init(frame: CGRect(x: 0, y: 0, width: gridViewWidth, height: gridViewWidth))
-        let margin: CGFloat = 2
+        let margin = marginsWidth
         let cellWidth: CGFloat = CGFloat(Int((self.bounds.size.width - 5*margin)/4))
         for i in 0..<4 {
             for j in 0..<4 {
                 
                 let newGridCell = GridCell(cellSize: CGSize(width: cellWidth, height: cellWidth),
                                            cellOriginX: (cellWidth + margin)*CGFloat(i) + margin,
-                                           cellOriginY: (cellWidth + margin)*CGFloat(j) + margin)
+                                           cellOriginY: (cellWidth + margin)*CGFloat(j) + margin,
+                                           startColor: CustomColor.purpleHues.2)
                 
                 newGridCell.row = i
                 newGridCell.column = j

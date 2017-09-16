@@ -18,13 +18,13 @@ class UIController {
     fileprivate var pan = UIPanGestureRecognizer()
     fileprivate var destinationStar = UIView()
     fileprivate var robotView = RobotView()
-    fileprivate var myGridView = GridView()
+    fileprivate var myGridView = GridView4x4()
     fileprivate var startedPanOnStar = false
     fileprivate var lastCheckedCell : GridCell?
     fileprivate var robotModel = Robot()
     fileprivate var starModel = MovableCursor()
     
-    init(_robotModel: Robot, _starModel: MovableCursor, _view: UIView, _destinationStar: UIView, _robotView: RobotView, _myGridView: GridView) {
+    init(_robotModel: Robot, _starModel: MovableCursor, _view: UIView, _destinationStar: UIView, _robotView: RobotView, _myGridView: GridView4x4) {
         
         (view,destinationStar,robotView,myGridView,robotModel,starModel) = (_view,_destinationStar,_robotView,_myGridView,_robotModel,_starModel)
         

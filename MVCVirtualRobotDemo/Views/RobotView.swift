@@ -13,10 +13,10 @@ class RobotView: UIImageView {
     init() {super.init(frame: CGRect.zero)}
 
     
-    init(robotSize: CGSize, robotOriginX: CGFloat, robotOriginY: CGFloat) {
+    init(robotSize: CGSize, robotOriginX: CGFloat, robotOriginY: CGFloat, backgroundColor: UIColor, borderColor: UIColor) {
         super.init(frame: CGRect(x: robotOriginX, y: robotOriginY, width: robotSize.width, height: robotSize.height))
-        self.backgroundColor = .white
-        self.layer.borderColor = UIColor.purple.cgColor
+        self.backgroundColor = backgroundColor
+        self.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = 3
         self.isUserInteractionEnabled = false
         

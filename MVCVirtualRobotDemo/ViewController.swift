@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var destinationStar = Star()
     var robotView = RobotView()
     var robotModel = Robot()
-    let myGridView = GridView()
+    let myGridView = GridView4x4(marginsWidth: 2)
     var myStarDelegate : StarDelegate?
     var myUIController : UIController?
     
@@ -25,11 +25,11 @@ class ViewController: UIViewController {
         starModel = MovableCursor(_size: (Float(myGridView.cells[0].bounds.width/2),Float(myGridView.cells[0].bounds.width/2)), _center: (Float(myGridView.center.x),Float(myGridView.center.y)))
         robotModel = Robot(_center: (Float(myGridView.cells[3].center.x),Float(myGridView.cells[3].center.y)), _size: (Float(myGridView.cells[0].bounds.width/4),Float(myGridView.cells[0].bounds.width/4)), _speed: 100.0, _name: "ROOT")
         
-        robotView = RobotView(robotSize: CGSize(width: CGFloat(robotModel.width), height: CGFloat(robotModel.height)), robotOriginX: CGFloat(robotModel.locationOfCenterX-robotModel.width/2), robotOriginY: CGFloat(robotModel.locationOfCenterY-robotModel.height/2))
+        robotView = RobotView(robotSize: CGSize(width: CGFloat(robotModel.width), height: CGFloat(robotModel.height)), robotOriginX: CGFloat(robotModel.locationOfCenterX-robotModel.width/2), robotOriginY: CGFloat(robotModel.locationOfCenterY-robotModel.height/2), backgroundColor: .purple, borderColor: .white)
         robotView.layer.zPosition = 2
         view.addSubview(robotView)
         
-        destinationStar = Star(starSize: CGSize(width: CGFloat(starModel.width), height: CGFloat(starModel.height)), starOriginX: CGFloat(starModel.locationOfCenterX-starModel.width/2), starOriginY: CGFloat(starModel.locationOfCenterY-starModel.height/2), starAlpha: 1.0)
+        destinationStar = Star(starSize: CGSize(width: CGFloat(starModel.width), height: CGFloat(starModel.height)), starOriginX: CGFloat(starModel.locationOfCenterX-starModel.width/2), starOriginY: CGFloat(starModel.locationOfCenterY-starModel.height/2), starAlpha: 1.0, image: #imageLiteral(resourceName: "star"))
         destinationStar.layer.zPosition = 1
         view.addSubview(destinationStar)
         

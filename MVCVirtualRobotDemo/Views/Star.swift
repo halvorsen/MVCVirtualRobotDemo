@@ -12,10 +12,10 @@ class Star: UIImageView {
 
     init() {super.init(frame: CGRect.zero)}
     
-    init(starSize: CGSize, starOriginX: CGFloat, starOriginY: CGFloat, starAlpha: CGFloat = 0.0) {
+    init(starSize: CGSize, starOriginX: CGFloat, starOriginY: CGFloat, starAlpha: CGFloat = 0.0, image: UIImage) {
         super.init(frame: CGRect(x: starOriginX, y: starOriginY, width: starSize.width, height: starSize.height))
         self.backgroundColor = .clear
-        self.image = #imageLiteral(resourceName: "star")
+        self.image = image
         self.alpha = starAlpha
     }
     
