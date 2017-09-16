@@ -141,7 +141,7 @@ struct Robot {
                 let _ = instructionsToLocation(x: x, y: y)
             } else {
                 myStep = .rotationUpOrDown
-                //complete & set up for next
+                locationCenter = (x,y)
                 return instructions
             }
             
@@ -150,7 +150,7 @@ struct Robot {
             let xMovement = x - locationOfCenterX
             instructions.append((.moveHorizontal,Double(abs(xMovement/speed))))
             myStep = .rotationUpOrDown
-            //complete & set up for next
+            locationCenter = (x,y)
             return instructions
         }
         return instructions

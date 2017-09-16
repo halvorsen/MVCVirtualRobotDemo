@@ -19,10 +19,10 @@
 		062120091F6AE92800C0BD37 /* UIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120061F6AE92700C0BD37 /* UIController.swift */; };
 		0621200A1F6AE92800C0BD37 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120071F6AE92700C0BD37 /* Controller.swift */; };
 		0621200B1F6AE92800C0BD37 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120081F6AE92800C0BD37 /* Delegates.swift */; };
-		0621200D1F6AE93300C0BD37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621200C1F6AE93200C0BD37 /* ViewController.swift */; };
 		062120101F6AE96F00C0BD37 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621200E1F6AE96E00C0BD37 /* CustomColor.swift */; };
 		062120111F6AE96F00C0BD37 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621200F1F6AE96E00C0BD37 /* Global.swift */; };
 		062120161F6AEAA200C0BD37 /* MoveableCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062120151F6AEAA200C0BD37 /* MoveableCursor.swift */; };
+		0653D4461F6DBC330060DE98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0653D4451F6DBC330060DE98 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +40,10 @@
 		062120061F6AE92700C0BD37 /* UIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIController.swift; sourceTree = "<group>"; };
 		062120071F6AE92700C0BD37 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		062120081F6AE92800C0BD37 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
-		0621200C1F6AE93200C0BD37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../root/Root/ViewController.swift; sourceTree = "<group>"; };
 		0621200E1F6AE96E00C0BD37 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		0621200F1F6AE96E00C0BD37 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		062120151F6AEAA200C0BD37 /* MoveableCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveableCursor.swift; sourceTree = "<group>"; };
+		0653D4451F6DBC330060DE98 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 				06211FE71F6ACC9300C0BD37 /* AppDelegate.swift */,
 				062120141F6AE9ED00C0BD37 /* Views */,
 				062120131F6AE9D200C0BD37 /* Controller */,
-				0621200C1F6AE93200C0BD37 /* ViewController.swift */,
+				0653D4451F6DBC330060DE98 /* ViewController.swift */,
 				062120121F6AE9BE00C0BD37 /* Supporting */,
 				06211FFB1F6AD19900C0BD37 /* Models */,
 				06211FEE1F6ACC9300C0BD37 /* Assets.xcassets */,
@@ -208,7 +208,7 @@
 				062120111F6AE96F00C0BD37 /* Global.swift in Sources */,
 				062120161F6AEAA200C0BD37 /* MoveableCursor.swift in Sources */,
 				0621200A1F6AE92800C0BD37 /* Controller.swift in Sources */,
-				0621200D1F6AE93300C0BD37 /* ViewController.swift in Sources */,
+				0653D4461F6DBC330060DE98 /* ViewController.swift in Sources */,
 				062120051F6AE91800C0BD37 /* RobotView.swift in Sources */,
 				0621200B1F6AE92800C0BD37 /* Delegates.swift in Sources */,
 				062120021F6AE91800C0BD37 /* GridView.swift in Sources */,

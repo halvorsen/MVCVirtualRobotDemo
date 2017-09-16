@@ -176,8 +176,7 @@ extension UIController: RobotDelegate {
         let instructions = robotModel.instructionsToLocation(x:starModel.locationOfCenterX, y:starModel.locationOfCenterY)
         print(instructions)
         moveView(instructions: instructions, count: 0, done: {
-            self.robotModel.locationCenter = (Float(self.robotView.center.x),Float(self.robotView.center.y))
-            
+            //robot is done moving
         })
 
     }
