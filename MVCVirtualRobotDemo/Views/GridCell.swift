@@ -10,9 +10,7 @@ import UIKit
 
 class GridCell: UIView {
     
-    var row = Int()
-    var column = Int()
-    var star = Star()
+    public var star = Star()
     
     init(cellSize: CGSize, cellOriginX: CGFloat, cellOriginY: CGFloat, startColor: UIColor) {
         

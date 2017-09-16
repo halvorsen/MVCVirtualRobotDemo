@@ -12,7 +12,6 @@ class RobotView: UIImageView {
     
     init() {super.init(frame: CGRect.zero)}
 
-    
     init(robotSize: CGSize, robotOriginX: CGFloat, robotOriginY: CGFloat, backgroundColor: UIColor, borderColor: UIColor) {
         super.init(frame: CGRect(x: robotOriginX, y: robotOriginY, width: robotSize.width, height: robotSize.height))
         self.backgroundColor = backgroundColor

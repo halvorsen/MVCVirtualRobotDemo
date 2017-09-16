@@ -10,8 +10,8 @@ import UIKit
 
 class GridView4x4: UIView {
     
-    var cells = [GridCell]()
-    var gridViewWidth: CGFloat {
+    public var cells = [GridCell]()
+    private var gridViewWidth: CGFloat {
         if UIScreen.main.bounds.height < UIScreen.main.bounds.width {
             return UIScreen.main.bounds.height
         } else {
@@ -34,9 +34,6 @@ class GridView4x4: UIView {
                                            cellOriginX: (cellWidth + margin)*CGFloat(i) + margin,
                                            cellOriginY: (cellWidth + margin)*CGFloat(j) + margin,
                                            startColor: CustomColor.purpleHues.2)
-                
-                newGridCell.row = i
-                newGridCell.column = j
                 
                 addSubview(newGridCell)
                 
