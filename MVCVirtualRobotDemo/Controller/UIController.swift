@@ -53,7 +53,7 @@ extension UIController {
             guard let robotAnimatedLocation = robotView.layer.presentation()?.frame.origin else {print("guarded2");return}
             let centerPoint = view.convert(robotAnimatedLocation, to: myGridView)
             if cell.frame.contains(centerPoint) {
-            
+                
                 currentCell = cell
                 if let backgroundColor = cell.backgroundColor {
                     currentHue = backgroundColor
@@ -85,7 +85,7 @@ extension UIController {
             for cell in myGridView.cells {
                 cell.star.alpha = 0.1
             }
-            Global.delay(bySeconds: 0.2) {
+            Global.delay(bySeconds: 0.2) { [unowned self] in
                 for cell in self.myGridView.cells {
                     cell.star.alpha = 0.0
                 }
@@ -111,10 +111,10 @@ extension UIController {
             
         } else if gestureRecognizer.state == .changed && startedPanOnStar {
             
-            let translation = gestureRecognizer.translation(in: self.view)
+            let translation = gestureRecognizer.translation(in: view)
             destinationStar.center = CGPoint(x: destinationStar.center.x + translation.x, y: destinationStar.center.y + translation.y)
             starModel.locationCenter = (Float(destinationStar.center.x),Float(destinationStar.center.y))
-            gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
+            gestureRecognizer.setTranslation(CGPoint.zero, in: view)
             
         } else if gestureRecognizer.state == .ended {
             startedPanOnStar = false
@@ -126,11 +126,11 @@ extension UIController {
             for cell in myGridView.cells {
                 if cell.frame.contains(destinationStar.center) {
                     
-                    UIView.animate(withDuration: 0.2, animations: {
+                    UIView.animate(withDuration: 0.2, animations: { [unowned self] in
                         self.destinationStar.center = self.myGridView.convert(cell.center, to: self.view)
                         self.starModel.locationCenter = (Float(self.destinationStar.center.x),Float(self.destinationStar.center.y))
-                    }, completion: {_ in
-                        self.relocateRobot(robotView: self.robotView)
+                        }, completion: { [unowned self] _ in
+                            self.relocateRobot(robotView: self.robotView)
                     })
                     
                     return
@@ -146,27 +146,27 @@ extension UIController: RobotDelegate {
     
     internal func moveView(instructions: [(MovementAction,Double)], count: Int, done: @escaping () -> Void) {
         if count < instructions.count {
-        UIView.animate(withDuration: instructions[count].1, animations: {
-            switch instructions[count].0 {
-            case .rotateToFaceUp:
-                self.robotView.transform = CGAffineTransform(rotationAngle: 0)
-            case .rotateToFaceDown:
-                self.robotView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
-            case .rotateToFaceLeft:
-                self.robotView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
-            case .rotateToFaceRight:
-                self.robotView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
-            case .moveHorizontal:
-                self.robotView.center.x = CGFloat(self.starModel.locationOfCenterX)
-            case .moveVertical:
-                self.robotView.center.y = CGFloat(self.starModel.locationOfCenterY)
+            UIView.animate(withDuration: instructions[count].1, animations: { [unowned self] in
+                switch instructions[count].0 {
+                case .rotateToFaceUp:
+                    self.robotView.transform = CGAffineTransform(rotationAngle: 0)
+                case .rotateToFaceDown:
+                    self.robotView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                case .rotateToFaceLeft:
+                    self.robotView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+                case .rotateToFaceRight:
+                    self.robotView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
+                case .moveHorizontal:
+                    self.robotView.center.x = CGFloat(self.starModel.locationOfCenterX)
+                case .moveVertical:
+                    self.robotView.center.y = CGFloat(self.starModel.locationOfCenterY)
+                    
+                }
                 
-            }
-
-        }, completion: { _ in
-            self.moveView(instructions: instructions, count: count + 1) {done()}
-            
-        })
+                }, completion: { [unowned self] _ in
+                    self.moveView(instructions: instructions, count: count + 1) {done()}
+                    
+            })
         } else {
             done()
         }
@@ -178,7 +178,7 @@ extension UIController: RobotDelegate {
         moveView(instructions: instructions, count: 0, done: {
             //robot is done moving
         })
-
+        
     }
 }
 //blink the cursor
@@ -186,7 +186,7 @@ extension UIController: StarDelegate {
     
     internal func highlightStar(view: UIView) {
         
-        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) {_ in
+        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [unowned self] _ in
             
             self.pulse(highlightedView: view)
             self.starModel.isBlinking = true
